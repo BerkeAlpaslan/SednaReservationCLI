@@ -1,0 +1,28 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-md-3">
+      <!-- Sidebar Menu Component -->
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+      <div class="container mt-5">
+        <h2 class="mb-4">Ödemelerim</h2>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let item of paymentModel">
+            <div class="card payment-card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{getHotelName(item.hotelId)}}</h5>
+                <p class="card-text"><strong>Tutar:</strong> {{item.amount}} ₺</p>
+                <p class="card-text"><strong>Ödeme Yöntemi:</strong> {{item.paymentMethod}}</p>
+                <p [ngClass]="{'text-success': item.status === 'success', 'text-danger': item.status === 'failure'}">
+                  <strong>Durum:</strong> {{item.status === 'success' ? 'Başarılı ✅' : 'Başarısız ❌'}}
+                </p>
+                <p class="card-text"><strong>Tarih:</strong> {{item.date | date: 'mediumDate'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

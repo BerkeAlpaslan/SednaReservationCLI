@@ -1,0 +1,126 @@
+<!-- 
+<div *ngIf="hotel else no_Hotel" class="card">
+  <img src="https://www.enucuzu.com/blog/wp-content/uploads/2024/06/7-yildizli-otel-nedir.webp" class="card-img-top" alt="Card Image">
+  <div class="card-img-overlay">
+    <h5 class="card-title text-white">{{hotel.name}}</h5>
+    <div class="text-warning pb-1">
+      <ng-container *ngFor="let _ of [].constructor(hotel.star)">
+        <i class="fa fa-star" aria-hidden="true"></i>
+      </ng-container>
+    </div>
+      </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <h5 class="card-title">Açıklama</h5>
+        <p class="card-text">{{hotel.description}} Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus maiores asperiores voluptate earum nobis dicta corrupti saepe eos aperiam possimus, cupiditate ad fuga consequuntur laboriosam?</p>
+      </div>
+      <div class="col-md-6">
+        <h5 class="card-title">Oda Bilgileri</h5>
+        <ul class="list-unstyled">
+          <li>
+            <label class="card-text"><b>Telefon Numarası:</b></label>
+            <span class="ml-1">{{ hotel.phone }} Lorem, ipsum dolor.</span>
+          </li>
+          <li>
+            <label class="card-text"><b>Adres:</b></label>
+            <span class="ml-3">{{ hotel.address }} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, harum.</span>
+          </li>
+          <li>
+            <label class="card-text"><b>Email Adresi:</b></label>
+            <span class="ml-2">{{ hotel.email }} Lorem, ipsum dolor.</span>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<ng-template #no_Hotel>
+  <div class="alert alert-warning">Hotel Bulunamadı</div>
+</ng-template>
+<app-room class="m-1" *ngIf="hotel" [hotelId]="hotel.id"></app-room>
+<app-review *ngIf="hotel" [hotelId]="hotel.id"></app-review>
+
+ -->
+
+ <div class = "row ">
+  <div class = "col-md-1"></div>
+  <div class = "col-md-10 ">
+      <div *ngIf="hotel" class="main_grid">
+          <div class="main_card">
+              <div class="popular__content">
+                  <div class = "row">
+                      <div class = "col-md-7">
+                          <div class="slider-wrapper">
+                              <div class="slider" #slider>
+                                <img  id="slide1" src="{{hotel.imageUrl}}" alt="">
+                              </div>
+                              <!-- <div class="slider-nav">
+                                <button (click)="scrollToSlide('slide1')"></button>
+                                <button (click)="scrollToSlide('slide2')"></button>
+                                <button (click)="scrollToSlide('slide3')"></button>
+                              </div> -->
+                          </div>
+                      </div>
+                      <div class = "col-md-5">
+                          <div class="main_card_header">
+                              <h2 class = "mt-2">{{hotel.name}}</h2>
+                          </div>
+                          <p><i class="ri-map-pin-line"></i> New York City, USA</p>
+                          <!--hotelfeatures-->
+                          <div class="features-grid">
+                              <ul class="features-list">
+                                  <li class="feature-item">
+                                      <div class="feature-content">
+                                        <svg class="feature-icon" aria-describedby="power-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                          <desc id="power-description">Elektrikli araç şarj noktası</desc>
+                                          <path d="M16.01 7 16 3h-2v4h-4V3H8v4h-.01C7 6.99 6 7.99 6 8.99v5.49L9.5 18v3h5v-3l3.5-3.51v-5.5c0-1-1-2-1.99-1.99z"></path>
+                                        </svg>
+                                        <span class="feature-text">Elektrikli araç şarj noktası</span>
+                                      </div>
+                                    </li>
+                                <li class="feature-item">
+                                  <div class="feature-content">
+                                    <svg class="feature-icon" aria-describedby="local_bar-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><desc id="local_bar-description">Bar</desc><path fill-rule="evenodd" d="M21 4.45c0-.8-.65-1.45-1.45-1.45H4.45a1.45 1.45 0 0 0-1.08 2.41L11 14v5H7a1 1 0 0 0-1 1 1 1 0 0 0 1 1h10a1 1 0 0 0 1-1 1 1 0 0 0-1-1h-4v-5l7.63-8.59c.24-.26.37-.61.37-.96zM7.43 7 5.66 5h12.69l-1.78 2H7.43z" clip-rule="evenodd"></path></svg>
+                                    <span class="feature-text">Bar</span>
+                                  </div>
+                                </li>
+                                <li class="feature-item">
+                                  <div class="feature-content">
+                                    <svg class="feature-icon" aria-describedby="airport_shuttle-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><desc id="airport_shuttle-description">Havaalanı transferi</desc><path fill-rule="evenodd" d="M4 17c0 .88.39 1.67 1 2.22v1.28a1.5 1.5 0 1 0 3 0V20h8v.5c0 .82.67 1.5 1.5 1.5.82 0 1.5-.67 1.5-1.5v-1.28c.61-.55 1-1.34 1-2.22V7c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm1.5-6H6V7h12v5z" clip-rule="evenodd"></path></svg>
+                                    <span class="feature-text">Havaalanı transferi</span>
+                                  </div>
+                                </li>
+                                <li class="feature-item">
+                                  <div class="feature-content">
+                                    <svg class="feature-icon" aria-describedby="spa-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><desc id="spa-description">Spa</desc><path fill-rule="evenodd" d="M12.84 2.38c-.4-.5-1.16-.5-1.57 0a13.12 13.12 0 0 0-2.77 7.1c1.29.69 2.46 1.69 3.49 2.76a14.94 14.94 0 0 1 3.5-2.76 12.92 12.92 0 0 0-2.65-7.12zm-3.87 9.89-.46-.29c.15.11.32.19.46.29zm3.02 3.17a12.03 12.03 0 0 0-8.87-5.39A1.02 1.02 0 0 0 2 11.16 12.19 12.19 0 0 0 12 22a12.18 12.18 0 0 0 10-10.84 1.02 1.02 0 0 0-1.12-1.11 12.03 12.03 0 0 0-8.89 5.39z" clip-rule="evenodd"></path></svg>
+                                    <span class="feature-text">Spa</span>
+                                  </div>
+                                </li>
+                                <li class="feature-item">
+                                  <div class="feature-content">
+                                    <svg class="feature-icon" aria-describedby="pool-description" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><desc id="pool-description">Havuz</desc><path fill-rule="evenodd" d="M6.11 5.52A1.24 1.24 0 0 1 5 4.31v-.1c0-.7.6-1.27 1.3-1.2 1.74.14 2.92.68 4.18 1.95l6.42 6.42-.41.23c-.37.24-.6.37-1.15.37-.55 0-.78-.14-1.15-.36a3.82 3.82 0 0 0-2.18-.65c-1.11 0-1.73.37-2.19.64a1.8 1.8 0 0 1-1.15.37 1.8 1.8 0 0 1-1.15-.36 5.42 5.42 0 0 0-.77-.4L10 7.97l-1-1a4.53 4.53 0 0 0-2.89-1.45zm15.24 13.39c.38.13.65.45.65.86v.12a.97.97 0 0 1-1.3.9c-.37-.12-.65-.3-.88-.43-.37-.22-.6-.36-1.15-.36-.56 0-.78.13-1.15.36-.46.27-1.07.64-2.18.64a3.8 3.8 0 0 1-2.18-.64c-.37-.22-.6-.36-1.15-.36-.56 0-.78.13-1.15.36-.46.27-1.08.64-2.19.64a3.8 3.8 0 0 1-2.18-.64c-.37-.23-.6-.36-1.15-.36-.55 0-.78.13-1.15.35-.24.14-.52.3-.89.44a.97.97 0 0 1-1.3-.91v-.12c0-.4.27-.73.65-.86.17-.06.32-.15.5-.27.46-.27 1.08-.64 2.19-.64 1.11 0 1.73.37 2.18.64.37.23.59.36 1.15.36.56 0 .78-.13 1.15-.36.46-.27 1.08-.64 2.19-.64 1.11 0 1.73.37 2.18.64.37.22.6.36 1.15.36.55 0 .78-.13 1.15-.36.45-.27 1.07-.64 2.18-.64s1.73.37 2.18.64c.18.12.33.21.5.27zM3.11 16.34A.88.88 0 0 1 2 15.48v-.23c0-.4.27-.73.65-.86.17-.06.32-.15.5-.27.46-.27 1.08-.64 2.19-.64a3.8 3.8 0 0 1 2.18.64c.37.22.6.36 1.15.36.56 0 .78-.13 1.15-.36.46-.27 1.08-.64 2.18-.64 1.11 0 1.73.37 2.18.64.37.23.59.36 1.15.36.55 0 .78-.13 1.15-.36.46-.27 1.07-.64 2.18-.64.63 0 1.14.36 1.47.62.33.27.46.65.46 1.06v.23c0 .4-.27.73-.65.86-.18.12-.33.21-.5.27-.46.27-1.08.64-2.18.64s-1.73-.37-2.18-.64a3.84 3.84 0 0 0-2.19-.64c-.56 0-.78.13-1.15.36-.46.27-1.07.64-2.18.64-.62 0-1.14-.36-1.47-.62-.33-.27-.46-.65-.46-1.06z" clip-rule="evenodd"></path></svg>
+                                    <span class="feature-text">Havuz</span>
+                                  </div>
+                                </li>
+                              </ul>
+                          </div>
+                          <!--googlemaps-->
+                          <div class="gps">
+                              <iframe
+                                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.5432153835297!2d-74.00601528459323!3d40.712775779330654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7e7a3a0b10d04d2!2zTmfDs3LDvGxL!5e0!3m2!1str!2str!4v1658494489590!5m2!1str!2str"
+                                  width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <app-room class="m-1" *ngIf="hotel" [hotelId]="hotel.id"></app-room>
+  </div>
+  <div class = "col-md-1"></div>
+</div>
+<app-review *ngIf="hotel" [hotelId]="hotel.id"></app-review>

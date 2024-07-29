@@ -1,0 +1,132 @@
+<div class="review-section">
+  <!-- Yorum Yapma Satırı -->
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h3>Yorum Yap</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="addreview" (ngSubmit)="addReview()">
+          <div hidden>
+            <div class="form-group">
+              <label for="name">userId:</label>
+              <input type="text" formControlName="userId" required />
+            </div>
+            <div class="form-group">
+              <label for="name">hotelId:</label>
+              <input type="text" formControlName="hotelId" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rating">Değerlendirme</label>
+            <select class="form-control" id="rating" formControlName="rating" name="rating" required >
+              <option value="1">1 Yıldız</option>
+              <option value="2">2 Yıldız</option>
+              <option value="3">3 Yıldız</option>
+              <option value="4">4 Yıldız</option>
+              <option value="5">5 Yıldız</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="comment">Yorum</label>
+            <textarea class="form-control" formControlName="comment" id="comment" rows="3"  name="comment" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  
+          <span class="error-message" style="color: red" *ngIf="errorMessage">{{errorMessage}}</span>
+          <span class="error-message" style="color: red" *ngIf="addreview.invalid && (addreview.dirty || addreview.touched)">
+            Tüm alanları doldurunuz.
+          </span>
+        </form>
+      </div>
+    </div>
+
+    <!-- Yorumları Görüntüleme Satırı -->
+    <div *ngIf="reviews.length else no_Review">
+      <h3 style="margin-top: 15px;">Yorumlar</h3>
+      <div class="mt-1" style="margin-bottom: 15px;" *ngIf="reviews.length > 0">
+        <div *ngFor="let rev of reviews" class="card mt-3">
+          <div class="card-body">
+            <h5> {{ getUserName(rev.userId) }} <span *ngFor="let i of [1, 2, 3, 4, 5]" class="star" [class.filled]="i <= rev.rating" >&#9733;</span></h5>
+              <span class="date">{{ rev.createdDate | date : "mediumDate" }}</span>
+              <p>{{ rev.comment }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #no_Review>
+        <div style="margin-top: 15px;" class="alert alert-warning">Daha Önce Yorum Yapılmamış.</div>
+      </ng-template>
+      
+  </div>
+</div>
+
+<!-- Yatay Yorum Yap Formu
+    <div class="review-form">
+        <form [formGroup]="addreview" (ngSubmit)="addReview()" >
+          <div class="form-group">
+            <label for="name">userId:</label>
+            <input type="text" formControlName="userId" required>
+          </div>
+          <div class="form-group">
+            <label for="name">hotelId:</label>
+            <input type="text" formControlName="hotelId" required>
+          </div>
+          <div class="form-group">
+            <label for="stars">Yıldız:</label>
+            <select formControlName="rating" >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="content">Yorum:</label>
+            <textarea formControlName="comment"  rows="3" ></textarea>
+          </div>
+
+
+          <div class="form-group">
+            <button type="submit">Yorum Yap</button>
+          </div>
+
+          <span class="error-message bg-danger" *ngIf="errorMessage">{{ errorMessage }}</span>
+          <span class="error-message bg-danger" *ngIf="addreview.invalid && (addreview.dirty || addreview.touched)">
+            Tüm alanları doldurunuz.
+          </span>
+
+
+        </form>
+      </div>
+
+ -->
+
+
+
+    <!-- Yorum Bileşeni
+     <div  *ngIf="reviews else no_Review" >
+    <div *ngFor="let item of reviews" class="review">
+      <div class="review-header">
+        <div class="stars">
+          <span *ngFor="let i of [1, 2, 3, 4, 5]" class="star" [class.filled]="i <= item.rating">&#9733;</span>
+        </div>
+        <div class="review-info">
+          <span class="name">{{getUserName(item.userId)}}</span>
+          <span class="date">{{item.createdDate | date: 'mediumDate'}}</span>
+        </div>
+      </div>
+      <div class="review-content">
+        <p>{{item.comment}}</p>
+      </div>
+    </div>
+    <ng-template #no_Review>
+      <div class="alert alert-warning">Daha önce hiç yorum yapılmamış...</div>
+    </ng-template>
+  </div> -->

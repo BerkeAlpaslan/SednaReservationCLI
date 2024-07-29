@@ -1,0 +1,39 @@
+<h2 mat-dialog-title class="text-center">Rezervasyon </h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="reservationForm" class="example-form">
+        
+    
+          <input type="hidden" formControlName="userId"  placeholder="User Id">
+          <input type="hidden" formControlName="totalPrice" [value]="totalPrice">
+          <input type="hidden" formControlName="hotelId" placeholder="Hotel Id">
+          <input type="hidden" formControlName="roomId"  placeholder="roomId">
+       
+        <!-- DateTimepicker -->
+        <mat-form-field>
+          <input formControlName="checkIn" matInput [matDatepickerFilter]="checkInFilter" [matDatepicker]="checkInPicker" placeholder="Check-in Date" (dateChange)="onCheckInDateChange($event)">
+          <mat-datepicker-toggle matSuffix [for]="checkInPicker"></mat-datepicker-toggle>
+          <mat-datepicker #checkInPicker></mat-datepicker>
+          <mat-error *ngIf="reservationForm.get('checkIn')?.hasError('required')">
+            Check-in Tarihi gereklidir
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="checkOut" matInput [matDatepickerFilter]="checkOutFilter" [matDatepicker]="checkOutPicker" placeholder="Check-out Date" [min]="checkInDate" (dateChange)="onCheckOutDateChange($event)">
+          <mat-datepicker-toggle matSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
+          <mat-datepicker #checkOutPicker></mat-datepicker>
+          <mat-error *ngIf="reservationForm.get('checkOut')?.hasError('required')">
+            Check-out Tarihi gereklidir
+          </mat-error>
+        </mat-form-field>
+
+          <input type="hidden" formControlName="status" value="PNC" placeholder="status">
+   
+          <div class="total-price">
+            <label><b>Toplam fiyat:</b> {{totalPrice}} ₺</label>
+          </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="addReservation()" mat-button [disabled]="!reservationForm.valid">Rezervasyon Yap</button>
+</mat-dialog-actions>

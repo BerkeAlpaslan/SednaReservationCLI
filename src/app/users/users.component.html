@@ -1,0 +1,26 @@
+<div class="container my-3">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- Sidebar Menu Component -->
+        <app-sidebar></app-sidebar>
+        
+      </div>
+      <div class="col-md-9">
+        <!-- Material Tab Group -->
+        <mat-tab-group>
+          <mat-tab label="Hoşgeldiniz">
+            <div class="container">
+              <div class="logo m-2">
+                <img class="img-fluid img" src="/assets/img/logo.png">
+              </div>
+              <p class="text-center"><b>SednaCloud </b> Uygulamasına hoşgeldiniz. Kullanıcı Panelindesiniz.. </p>
+            </div>
+          </mat-tab>
+          <mat-tab label="Rezervasyonlarım">
+            <app-my-reservations></app-my-reservations>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+  

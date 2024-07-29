@@ -1,0 +1,40 @@
+<form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width m-1">
+        <mat-label>Hotel Id</mat-label>
+        <mat-select formControlName="hotelId" placeholder="Otelinizi seçin..">
+          <mat-option *ngFor="let hotel of myHotels" [value]="hotel.id">
+            {{ hotel.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="roomForm.get('hotelId').hasError('required')">Hotel ID is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width m-1">
+        <mat-label> Oda Tipi</mat-label>
+        <mat-select formControlName="roomTypeId" placeholder="Oda tipini seçin...">
+            <mat-option *ngFor="let odaTipi of roomType" [value]="odaTipi.id">
+                {{odaTipi.name}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="roomForm.get('roomTypeId').hasError('required')"> RoomTypeIs required</mat-error>
+       </mat-form-field>
+  
+    <mat-form-field class="example-full-width m-1">
+      <mat-label>Yetkişkin Fiyatı</mat-label>
+      <input matInput formControlName="baseAdultPrice" placeholder="Yetişkin Fiyatı" type="number">
+      <app-error-message
+      [control]="roomForm.get('baseAdultPrice')">
+    </app-error-message>
+    
+    </mat-form-field>
+    <mat-form-field class="example-full-width m-1">
+      <mat-label>Çocuk Fiyatı</mat-label>
+      <input matInput formControlName="baseChildPrice" placeholder="Çocuk Fiyatı" type="number">
+      <app-error-message
+      [control]="roomForm.get('baseChildPrice')">
+    </app-error-message>
+    </mat-form-field>
+    <input formControlName="status" type="hidden" value="OK" >
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <mat matError *ngIf="!!errorMessage"> {{errorMessage}}</mat>
+  </form>
+  
